@@ -1,0 +1,49 @@
+Theme: 
+	Para criar breakpoints: <theme_name>.breakpoints.yml, com os campos:
+		<theme_name>.narrow:
+	  label: Um nomezíneo para humanos
+	  mediaQuery: 'all and (min-width: 560px) and (max-width: 860px)'
+	  weight: 1
+	  multipliers:
+	    - 1x (o multiplicador de pixels, para telas de retina, por exemplo)
+
+	Módulo	responsive_image => Core, desativado por default, é preciso ativar manualmente. Vai surgir um menu em configuration > Media > Responsive Images. Cria estilos de imagens responsivos com o <figure> do HTML5 para cada breakpoint declarado em <theme_name>.breakpoints.yml. 
+		Leia mais: http://drupal8.docksal/admin/help/responsive_image e drupal.org/documentation/modules/breakpoint
+
+	Coding Standarts: (video 22 - Coding Standards)
+		- Identação: 2 spaces
+		- Unix Line Endings ("\n")
+		- Linhas com menos de 80 chars
+		drupal.org/coding-standards
+
+	Templates:
+		São os .html.twig. Como é de se esperar, é renderizado do mais interno para o mais externo, exemplo: field > node > region > page > html, e o theme é feito através de overrides destes template files. Os padrões são html, page, region, block, node, taxonomy-term, field, comment, comment-wrapper, foruns, maintenance-page e search-result
+		drupal.org/node/2513632
+		twig.sensiolabs.org/doc/templates.html
+		html => Declare head and body, DOCTYPE
+		page => Regions
+		region => When rendering reginons
+		block => Markup block aninhado a regiões
+		node => node content
+		field => fields
+		comment => Comments
+
+		É desencorajado cirar template em módulos de PHP
+		drupal.org/node/2640110 <= Create custom twig templates from custom module (parece bom, além do escopo do curso)
+
+	Overrides:
+		Copie o arquivo que você quer sobreescrever e cole no <theme_dir>/templates. Pòde ser genérico (como todas as page) ou específico (como node 44). O debug do twig ajuda nesse caso com os file names suggestions.
+		Ativar debug do twig: docroot/sites/default/services.yml, no twig.config, debug, mude para true. Leia mais sobre twig debug (muito bom): drupal.org/node/1903374
+	Drupal Twig template files name conventions: https://www.drupal.org/node/2354645 <= ótimo guia para templates overrides
+
+	Custom Regions:
+		3 arquivos: .info.yml, page.html.twig e estilizar com css
+		Obs: Caso use um page.inexistente_region, foda-se, não da erro nem nada, o Drupal não ta nem aí.
+		Leia mais: https://www.drupal.org/docs/8/theming-drupal-8/adding-regions-to-a-theme
+		Sobre as hidden regions, page_top e page_bottom, são colocadas no html.html.twig:
+	    {{ page_top }}
+	    {{ page }}
+	    {{ page_bottom }}
+
+	Base Theme:
+		Bartik e Seven (default) extendem o Classy. Stable (minimal html, é o base theme para todos os que não especificam) e Stark (Tool for themers, usa o default sem base theme, é feito para usar como troubleshooting e para estudar theme) também tem no core.
