@@ -1,0 +1,19 @@
+name: My Great Theme
+type: theme
+description: This is my first theme project
+core: 8.x
+screenshot: mytheme.png
+//: Drupal procura um screenshot.png por default
+//logo: Drupal procura um logo.svg por default
+
+regions:
+  header: Header
+  mytheme_menu: Navigation
+  content: Content
+  sidebar_first: Sidebar First
+  footer: Footer
+  page_top: Page Top
+  page_bottom: Page Bottom
+
+libraries:
+  - mytheme/global-css
