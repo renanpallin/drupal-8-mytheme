@@ -1,3 +1,37 @@
+Drupal 8 Layout and Theming Course ():
+
+Novo theme: Pasta com o nome dele em docroot/themes
+<theme_name>.info.yml => declarar tudo que precisa para o theme
+
+
+Regions default: (caso não decalre, estas são as que o Drupal vai colocar para você. Se você declarar alguma, terá que declarar todas). Cada region pode ter um info.yml, um html.twig e um .css
+	- sidebar_first:
+
+Hidden Regions: Usadas por módulos
+	- page_top
+	- page_bottom
+	
+
+	Header
+VM920:1 Primary menu
+VM920:1 Secondary menu
+VM920:1 Breadcrumb
+VM920:1 Highlighted
+VM920:1 Help
+VM920:1 Content
+VM920:1 Left sidebar
+VM920:1 Right sidebar
+VM920:1 Footer
+
+Libraries: 
+	declarar o container em <theme_name>.libraries.yml e adicionar o que vc quer.
+	para usar em TODAS AS PÁGINAS, no info.yml, libraries: <theme_name>/<container_declarado>
+
+<theme_name>.info.yml
+screenshot: mytheme.png
+//: Drupal procura um screenshot.png por default
+//logo: Drupal procura um logo.svg por default
+
 Theme: 
 	Para criar breakpoints: <theme_name>.breakpoints.yml, com os campos:
 		<theme_name>.narrow:
